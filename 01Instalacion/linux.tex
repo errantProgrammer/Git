@@ -1,0 +1,31 @@
+\subsection{Instalación de git para Linux}
+
+La instalación de git para Linux, va a depender de la distro con la que usted cuente. Aquí ejemplos para multiples distro de Linux:
+
+\begin{itemize}
+	\item Debian/Ubuntu
+	\begin{ubuntu}
+		\mint{bash}|sudo apt-get install git|
+	\end{ubuntu}
+	
+	\item Fedora 22 y posteriores
+	\begin{fedora}
+		\mint{bash}|sudo dnf install git|
+	\end{fedora}
+
+	\item Gentoo
+	\begin{gentoo}
+		\mint{bash}|sudo emerge -ask -verbose dev-vcs/git|
+	\end{gentoo}
+	
+	\item Arch Linux
+	\begin{archLinux}
+		\mint{bash}|sudo pacman -S git|
+	\end{archLinux}
+		
+	\item Nix/NixOS
+	\begin{nixos}
+		\mint{bash}|sudo urpmi git|
+	\end{nixos}
+
+\end{itemize}
