@@ -1,0 +1,128 @@
+\section{Configuraciones Básicas de Git}
+
+Para realizar las configuraciones de git, vamos a poder realizar a 3 niveles de configuración, cada nivel de 2 formas distintas.
+
+\begin{itemize}
+
+	\item A nivel de sistema.
+	\begin{enumerate}
+		\item Modificando el archivo de configuración general que se encuentra en la siguiente ruta:
+		\begin{terminal}
+			\mint{bash}|/etc/gitconfig| 		    
+		\end{terminal}
+		\item Agregando la bandera \emph{--system} después del git config
+	\end{enumerate}
+	
+	\item A nivel de nuestro usuario.
+	\begin{enumerate}
+		\item Modificando el archivo de configuración de usuario que se encuentra en una de las siguientes rutas:
+		\begin{terminal}
+			\mint{bash}|~/.gitconfig| 	
+			\mint{bash}|~/.config/git/config| 		    
+		\end{terminal}
+		\item Agregando la bandera \emph{--global} después del git config
+	\end{enumerate}
+
+	\item A nivel de proyecto.
+	\begin{enumerate}
+		\item Modificando el archivo de configuración del proyecto se encuentra en dentro de la carpeta \emph{.git} de nuestro proyecto.
+	    \begin{terminal}
+			\mint{bash}|ruta_del_proyecto/.git/config| 		    
+		\end{terminal}
+		\item Sin agregar ninguna bandera a git config.
+	\end{enumerate}	 	
+	
+\end{itemize}
+
+\begin{pucpImportant}
+	
+	\begin{enumerate}
+		\item El trabajar con git suele ser normalmente desde la terminal, por lo que no se modificará directamente ninguno de los archivos mencionados anteriormente.
+		\begin{itemize}
+			\item Si usted trabaja desde windows, se recomienda usar la terminal que se descargó al momento de instalar git(git bash).
+		\end{itemize}
+		\item Si va a trabajar con varias cuentas de github, ya sea que desee una cuenta personal y una cuenta para trabajo, esto se explicará en el \textcolor{pucpRojo}	{CAPITULO CON MULTIPLES CUENTAS DE GITHUB}.
+		\begin{itemize}
+			\item Por tal motivo, todas las configuraciones mostradas solo será a nivel de repositorio.
+		\end{itemize}
+	\end{enumerate}
+
+\end{pucpImportant}
+
+\subsection{Configuración de usuario}
+
+Lo primero que vamos a establecer es nuestro nombre de usuario y correo electrónico. Esto es indispensable
+porque Git lo va a utilizar para poder identificar a la persona que realizo algún cambio, es específico con los \emph{commits}.
+
+\begin{gitCode}
+\begin{minted}{bash}
+git config user.name "nombre de usuario"
+git config user.email "correo_eletronico@ejemplo.com"
+\end{minted}
+\end{gitCode}
+
+\subsection{Configuración de editor}
+
+La segunda cosa importante que tenemos que configurar es el editor con el que va a trabajar git, cuando este nos solicite ingresar algún tipo de texto.
+
+
+Si instalamos git desde windows, pudimos escoger con que editor va a trabajar git; o en caso necesitemos trabajar con algún otro tipo de editor.
+
+\begin{gitCode}
+\begin{minted}{bash}
+git config core.editor "editor-de-codigo"
+\end{minted}
+\end{gitCode}
+
+Aquí se presentan unos pocos, pero si gusta trabajar con otro editor puede ver la siguiente
+\href{https://git-scm.com/book/en/v2/Appendix-C\%3A-Git-Commands-Setup-and-Config}{lista}.
+
+\begin{itemize}
+
+	\item Atom:
+	\begin{terminal}
+		\mint{bash}|git config core.editor "atom --wait"|
+	\end{terminal}
+
+	\item Emacs:
+	\begin{terminal}
+		\mint{bash}|git config core.editor emacs|
+	\end{terminal}
+
+	\item Nano:
+	\begin{terminal}
+		\mint{bash}|git config core.editor "nano -w"|
+	\end{terminal}
+	
+	\item Visual Studio Code:
+	\begin{terminal}
+		\mint{bash}|git config core.editor "code --wait"|
+	\end{terminal}	
+
+\end{itemize}
+
+\subsection{Configuración de salto de línea}
+
+Algo a tener en cuenta que Windows y Linux, no manejan el salto de fin de línea de cual forma, por lo que si vamos a trabajar en un proyecto donde tengamos que
+trabajar en múltiples sistemas operativos, esto es muy recomendable.
+
+\begin{gitCode}
+\begin{minted}{bash}
+git config core.autocrlf opciones
+\end{minted}
+\end{gitCode}
+
+Para esto vamos a tener 3 opciones:
+
+\begin{description}
+	\item[true:]Convierte los finales de salto de línea al formato CRLF. Este es el recomendable si usted está trabajando desde Windows.
+	\item[false:]No se realiza ninguna conversión automática de saltos de línea; por lo tanto, se van a quedar con el salto de línea definido por el sistema operativo donde fueron creados. Recomendado si usted trabaja desde Linux.
+	\item[input:]Git convertirá los saltos de línea al formato del sistema operativo con el que estamos trabajando. Sin embargo, al momento de realizar un commit estos se almacenarán en formato de tipo UNIX(LF). Recomendado si tiene que trabajar en múltiples sistemas operativos.
+\end{description}
+
+\begin{terminal}
+\mint{bash}|git config core.autocrlf input|
+\end{terminal}
+
+
+
